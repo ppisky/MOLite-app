@@ -28,6 +28,7 @@ core 独立采用 Apache License 2.0，不因为应用使用 AGPL 而把其独�
 | Compose Multiplatform、Material 3、AndroidX Activity/Lifecycle | JetBrains / Android Open Source Project | Apache-2.0；各发行包保留自己的元数据与版权 |
 | Skiko / Skia（桌面） | JetBrains / Google | Apache-2.0 / BSD-3-Clause；发行物附带相应原始声明 |
 | Rustls Android verifier AAR 0.2.0 | rustls/rustls-platform-verifier | MIT OR Apache-2.0；选择 Apache-2.0，版本须与 core Cargo.lock 对齐 |
+| JNI 适配层静态链接的 Android libc++ | Android NDK / LLVM | Apache-2.0 WITH LLVM-exception；NDK 原始声明见 licenses/Android-NDK-LLVM-NOTICE.txt，其中含工具链其他组件的声明，不表示其全部进入应用 |
 | HugeIcons Stroke Rounded 图形 | Hugeicons / rikkahub/hugeicons-compose | 原始免费图形为 MIT；保留图形版权。Compose 路径的具体来源版本见 NOTICE，未擅自为独立封装仓库推断其未声明的许可 |
 | JetBrains Mono | JetBrains s.r.o. | SIL Open Font License 1.1，见 FONT-LICENSE.txt |
 | MOLite 图标 | 本项目用户提供 | 按用户要求用于此项目，未声称是 RikkaHub 或 Hugeicons 图标；第三方使用仍须尊重原始权利 |
