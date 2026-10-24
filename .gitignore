@@ -4,6 +4,8 @@
 /.idea
 .DS_Store
 /build
+**/build/
+*.log
 /captures
 .externalNativeBuild
 .cxx
@@ -11,3 +13,9 @@ local.properties
 .cursor
 .history
 .kotlin
+*.dll
+*.so
+*.lib
+*.exp
+*.obj
+/dist/

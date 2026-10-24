@@ -1,0 +1,47 @@
+name: MOLite
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  windows-and-android:
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: '3.13'
+      - name: Check out pinned core
+        shell: pwsh
+        run: |
+          $pin = Get-Content native/core-version.json | ConvertFrom-Json
+          git clone $pin.repository ../MOLite-core
+          git -C ../MOLite-core checkout $pin.revision
+          rustup toolchain install 1.99.0 --profile minimal
+          rustup target add --toolchain 1.99.0 aarch64-linux-android x86_64-linux-android
+      - name: Android toolchain
+        shell: pwsh
+        run: |
+          sdkmanager "platforms;android-37.0" "build-tools;37.0.0" "ndk;28.2.13676358" "cmake;3.22.1"
+          "sdk.dir=$($env:ANDROID_HOME.Replace('\','/'))" | Set-Content local.properties
+      - name: Build and test
+        shell: pwsh
+        run: |
+          ./gradlew.bat :composeApp:compileKotlinDesktop :androidApp:assembleDebug :androidApp:assembleDebugAndroidTest :composeApp:desktopTest :composeApp:createDistributable
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python tools/test_distribution.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MOLite-android-debug
+          path: androidApp/build/outputs/apk/debug/*.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MOLite-windows-x64
+          path: composeApp/build/compose/binaries/main/app/MOLite/

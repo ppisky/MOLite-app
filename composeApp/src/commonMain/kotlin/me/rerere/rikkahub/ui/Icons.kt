@@ -1,0 +1,93 @@
+package me.rerere.rikkahub.ui
+
+import androidx.compose.material3.Icon
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
+import me.rerere.hugeicons.HugeIcons
+import me.rerere.hugeicons.stroke.*
+
+/** Uses the same HugeIcons vector paths as the upstream Android UI. */
+enum class Glyph(val vector: ImageVector) {
+    CHAT(HugeIcons.Message02),
+    PLUS(HugeIcons.Add01),
+    MENU(HugeIcons.Menu03),
+    BACK(HugeIcons.ArrowLeft01),
+    CHEVRON(HugeIcons.ArrowRight01),
+    DOWN(HugeIcons.ArrowDown01),
+    CLOSE(HugeIcons.Cancel01),
+    SEARCH(HugeIcons.Search01),
+    SETTINGS(HugeIcons.Settings03),
+    PERSON(HugeIcons.LookTop),
+    STAR(HugeIcons.Favourite),
+    HISTORY(HugeIcons.TransactionHistory),
+    TRANSLATE(HugeIcons.LanguageCircle),
+    IMAGE(HugeIcons.Image02),
+    EXTENSION(HugeIcons.Package),
+    FOLDER(HugeIcons.Folder01),
+    FILE(HugeIcons.File01),
+    EDIT(HugeIcons.PencilEdit01),
+    SERVER(HugeIcons.ServerStack01),
+    BRAIN(HugeIcons.Brain02),
+    TOOLS(HugeIcons.McpServer),
+    MIC(HugeIcons.Mic01),
+    GLOBE(HugeIcons.GlobalSearch),
+    PALETTE(HugeIcons.PaintBoard),
+    BELL(HugeIcons.Notification01),
+    DATABASE(HugeIcons.Database02),
+    INFO(HugeIcons.InformationCircle),
+    HEART(HugeIcons.Favourite),
+    CODE(HugeIcons.Code),
+    CHART(HugeIcons.ChartColumn),
+    SEND(HugeIcons.ArrowUp02),
+    ATTACH(HugeIcons.Attachment01),
+    COPY(HugeIcons.Copy01),
+    MORE(HugeIcons.MoreVertical),
+    DELETE(HugeIcons.Delete01),
+    CHECK(HugeIcons.Tick02),
+    TICK(HugeIcons.Tick01),
+    SUN(HugeIcons.Sun01),
+    SPARK(HugeIcons.Sparkles),
+    NEW_CHAT(HugeIcons.MessageAdd01),
+    OPTIONS(HugeIcons.LeftToRightListBullet),
+    SORT(HugeIcons.Sorting01),
+    FOLDER_ADD(HugeIcons.FolderAdd),
+    MOON(HugeIcons.Moon02),
+    DEVICE(HugeIcons.SmartPhone01),
+    MEDIA(HugeIcons.ImageToVideo),
+    INLOVE(HugeIcons.InLove),
+    CLAPPING(HugeIcons.Clapping01),
+    IMAGE_UPLOAD(HugeIcons.ImageUpload),
+    AI_MAGIC(HugeIcons.AiMagic),
+    BOOK(HugeIcons.Book01),
+    BOOKS(HugeIcons.Bookshelf01),
+    FULLSCREEN(HugeIcons.Fullscreen),
+    DRAG(HugeIcons.DragDropHorizontal),
+    ALERT(HugeIcons.Alert01),
+    SPEECH(HugeIcons.Megaphone01),
+    SHARE(HugeIcons.Share04),
+    ZAP(HugeIcons.Zap),
+    PROMPT_BOOK(HugeIcons.Book03),
+    PUZZLE(HugeIcons.Puzzle),
+    INTERNET(HugeIcons.Internet),
+    EDIT_AVATAR(HugeIcons.Edit03),
+    WRENCH(HugeIcons.Wrench01),
+    TEXT(HugeIcons.Text),
+    MODEL_TOOLS(HugeIcons.Tools),
+    MODALITY_IMAGE(HugeIcons.Image03),
+    SHARE_PROVIDER(HugeIcons.Share01),
+    SAVE(HugeIcons.FloppyDisk),
+    PLUG(HugeIcons.Connect),
+    VIEW(HugeIcons.View),
+    VIEW_OFF(HugeIcons.ViewOff),
+    PACKAGE_MODEL(HugeIcons.Package01),
+    CAMERA(HugeIcons.Camera01),
+    FILES(HugeIcons.Files02),
+    SETTINGS_SMALL(HugeIcons.Settings02),
+    VOICE(HugeIcons.Voice),
+}
+
+@Composable
+fun UiIcon(glyph: Glyph, description: String? = null, modifier: Modifier = Modifier) {
+    Icon(glyph.vector, description, modifier)
+}

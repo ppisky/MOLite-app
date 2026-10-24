@@ -1,0 +1,30 @@
+MOLite — Compose Multiplatform derivative of RikkaHub
+
+Upstream: https://github.com/rikkahub/rikkahub
+Base revision: db49822836524ac498cb6a3cb1d8fbd0e7815fa0
+Copyright (C) RikkaHub contributors
+License: GNU Affero General Public License, version 3 (see LICENSE)
+
+This derivative retains and adapts the upstream preset theme palettes,
+CardGroup, ConnectedChoiceButtons, PresetThemeButton, PagerTabs and Tag
+components, the filled heart vector, brand SVG paths/gradients, Tavern and
+RikkaHub images, and JetBrains Mono font. Chat, drawer, settings, assistant,
+provider and picker layouts reuse upstream UI code with platform and business
+dependencies removed. Other pages are simplified shared Compose layouts.
+Original service modules were removed during the UI redraw. MOLite now connects
+to the independently licensed MOLite-core through its C ABI and a JNI adapter.
+MOLite adds its own branding, default purple palette, local appearance storage,
+system document pickers and core-driven UI. The upstream Git history is retained.
+
+HugeIcons Compose stroke vectors are reused from the library used by upstream:
+https://github.com/rikkahub/hugeicons-compose
+Source revision: 18c1a6fe92a2b4e381397befd3eba9892f9e2686
+Only the UI vectors referenced by this derivative are included.
+
+JetBrains Mono: Copyright JetBrains s.r.o.; SIL Open Font License 1.1.
+See FONT-LICENSE.txt for the bundled font license.
+
+MOLite-core: https://github.com/ppisky/MOLite-core — Apache-2.0.
+Pinned revision and ABI: native/core-version.json.
+See licenses/MOLite-core-NOTICE.txt and THIRD_PARTY_NOTICES.md.
+MOLite application icon supplied by the project user.

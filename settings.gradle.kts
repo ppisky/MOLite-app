@@ -1,49 +1,38 @@
 pluginManagement {
-    includeBuild("build-logic")
-
+    val localConfig = java.util.Properties().apply {
+        val config = file("local.properties")
+        if (config.exists()) config.inputStream().use { load(it) }
+    }
     repositories {
-        google {
+        maven(localConfig.getProperty("google.maven.url", "https://dl.google.com/dl/android/maven2/")) {
             content {
                 includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
                 includeGroupByRegex("androidx.*")
+                includeGroupByRegex("com\\.google\\.testing.*")
             }
         }
-        mavenCentral()
+        maven(localConfig.getProperty("central.maven.url", "https://repo.maven.apache.org/maven2/"))
         gradlePluginPortal()
-        maven("https://repo.itextsupport.com/android")
-    }
-    resolutionStrategy {
-        eachPlugin {
-            if (requested.id.id == "io.objectbox") {
-                useModule("io.objectbox:objectbox-gradle-plugin:${requested.version}")
-            }
-        }
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    val localConfig = java.util.Properties().apply {
+        val config = file("local.properties")
+        if (config.exists()) config.inputStream().use { load(it) }
+    }
     repositories {
-        google()
-        mavenCentral()
-        maven("https://jitpack.io")
-        mavenLocal()
+        maven(localConfig.getProperty("google.maven.url", "https://dl.google.com/dl/android/maven2/")) {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("androidx.*")
+                includeGroupByRegex("com\\.google\\.testing.*")
+            }
+        }
+        maven(localConfig.getProperty("central.maven.url", "https://repo.maven.apache.org/maven2/"))
+        maven("https://raw.githubusercontent.com/rustls/rustls-platform-verifier/maven-archive/android-release-support/maven/") {
+            content { includeGroup("org.rustls") }
+        }
     }
 }
-
-rootProject.name = "rikkahub"
-include(":app")
-include(":highlight")
-include(":ai")
-include(":search")
-include(":speech")
-include(":common")
-include(":document")
-include(":web")
-include(":material3")
-include(":ui")
-include(":workspace")
-include(":terminal")
-include(":app:baselineprofile")
-include(":mediagen")
-include(":oauth")
+rootProject.name = "MOLite"
+include(":composeApp", ":androidApp")
